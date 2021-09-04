@@ -156,7 +156,7 @@ function endGame() {
     questionsEl.appendChild(submit);
 
     submit.addEventListener("click", function () {
-        var initials = createInput.value;
+        var initials = input.value;
 
         if (initials === null) {
             alert("Please enter your initials");
