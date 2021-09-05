@@ -10,29 +10,35 @@
 </head>
 
 <body>
-    <div class="container">
-        <div id="timer"></div>
-        <div id="welcome">
-            <h1>High Scores</h1>
-            <ul id="high-score"></ul>
-            <button id="home">Home</button>
-            <button id="clear" value="reset">Clear High Scores</button>
+    <main>
+        <div class="container">
+            <div id="timer"></div>
+            <div id="welcome">
+                <h1>High Scores</h1>
+                <ul id="high-score"></ul>
+                <button id="home">Home</button>
+                <button id="clear" value="reset">Clear High Scores</button>
+            </div>
         </div>
-    </div>
+    </main>
     <script>
         var highScoreEl = document.querySelector("#high-score");
         var homeEl = document.querySelector("#home");
         var resetEl = document.querySelector("#clear");
 
+        homeEl.addEventListener("click", function () {
+            window.location.replace("index.html");
+        })
+
         // need to be able to reset the scores
-        resetEl.addEventListener("click", function() {
+        resetEl.addEventListener("click", function () {
             localStorage.clear();
             location.reload();
         });
         // need to be able to show the top high scores
         var allScores = localStorage.getItem("allScores");
         allScores = JSON.parse(allScores);
-        
+
         allScores.length = (0, 5);
 
         if (allScores !== null) {
@@ -42,12 +48,8 @@
                 highScoreEl.appendChild(createLi);
             }
         };
-        
+       
 
-
-        homeEl.addEventListener("click", function() {
-            window.location.replace("index.html");
-        });
 
 
     </script>

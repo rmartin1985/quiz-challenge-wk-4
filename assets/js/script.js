@@ -87,8 +87,8 @@ function check(event) {
     var element = event.target;
 
     if (element.matches("li")) {
-        var newDiv = document.createElement("div");
-        newDiv.setAttribute("id", "newDiv");
+        var newDiv = document.querySelector("#newDiv");
+        //newDiv.setAttribute("id", "newDiv");
 
         if (element.textContent == questions[questionIndex].answer) {
             score++;
@@ -174,6 +174,7 @@ function endGame() {
                 allScores = JSON.parse(allScores);
             }
             allScores.push(finalScore);
+            // sort them by highest to lowest 
             allScores.sort((a, b) => b.score - a.score);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
