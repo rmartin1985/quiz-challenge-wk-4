@@ -165,15 +165,17 @@ function endGame() {
                 initials: initials,
                 score: timeRemaining
             }
-            var setScores = localStorage.getItem("setScores")
-            if (setScores === null) {
-                setScores = [];
+            var allScores = localStorage.getItem("allScores")
+            if (allScores === null) {
+                allScores = [];
             } else {
-                setScores = JSON.parse(setScores);
+                allScores = JSON.parse(allScores);
             }
-            setScores.push(finalScore);
-            var newScore = JSON.stringify(setScores);
-            localStorage.setItem("All scores", newScore);
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+
+            window.location.replace("highscores.html");
         }
     });
 }

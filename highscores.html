@@ -19,7 +19,34 @@
             <button id="clear" value="reset">Clear High Scores</button>
         </div>
     </div>
-    <script></script>
+    <script>
+        var highScoreEl = document.querySelector("#high-score");
+        var homeEl = document.querySelector("#home");
+        var resetEl = document.querySelector("#clear");
+
+        // need to be able to reset the scores
+        resetEl.addEventListener("click", function() {
+            localStorage.clear();
+            location.reload();
+        });
+        // need to be able to show the top high scores
+        var allScores = localStorage.getItem("allScores");
+        allScores = JSON.parse(allScores);
+
+        if (allScores !== null) {
+            for (var i = 0; i < allScores.length; i++) {
+                var createLi = document.createElement("li");
+                createLi.textContent = allScores[i].initials + " " + allScores[i].score;
+                highScoreEl.appendChild(createLi);
+            }
+        }
+
+        homeEl.addEventListener("click", function() {
+            window.location.replace("index.html");
+        });
+
+
+    </script>
 
 </body>
 
