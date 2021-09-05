@@ -145,6 +145,7 @@ function endGame() {
     var input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("id", "initials");
+    input.setAttribute("maxlength", "2");
     input.textContent = "";
 
     questionsEl.appendChild(input);
@@ -157,9 +158,9 @@ function endGame() {
     questionsEl.appendChild(submit);
 
     submit.addEventListener("click", function () {
-        var initials = input.value;
+        var initials = input.value.toUpperCase();
 
-        if (initials === null) {
+        if (initials === null || initials === "") {
             alert("Please enter your initials");
         } else {
             var finalScore = {

@@ -33,6 +33,7 @@
         var allScores = localStorage.getItem("allScores");
         allScores = JSON.parse(allScores);
         
+        allScores.length = (0, 5);
 
         if (allScores !== null) {
             for (var i = 0; i < allScores.length; i++) {
@@ -40,10 +41,8 @@
                 createLi.textContent = allScores[i].initials + " " + allScores[i].score;
                 highScoreEl.appendChild(createLi);
             }
-            if (allScores.length > 5) {
-            allScores.length = 5
-        }
-        }
+        };
+        
 
 
         homeEl.addEventListener("click", function() {
