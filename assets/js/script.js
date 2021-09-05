@@ -108,6 +108,7 @@ function check(event) {
     }
     questionsEl.appendChild(newDiv);
 }
+
 // Function to end the quiz
 function endGame() {
     questionsEl.innerHTML = "";
@@ -172,6 +173,7 @@ function endGame() {
                 allScores = JSON.parse(allScores);
             }
             allScores.push(finalScore);
+            allScores.sort((a, b) => b.score - a.score);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
 
