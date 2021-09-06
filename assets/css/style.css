@@ -121,20 +121,16 @@ input {
     color: red;
 }
 
-#home {
+#home, #clear {
     background-color: green;
     padding: 10px;
-    font-size: 20px;
+    font-size: 1.5vw;
     color: white;
     width: 45%;
 }
 
 #clear {
     background-color: red;
-    padding: 10px;
-    font-size: 20px;
-    color: white;
-    width: 45%;
 }
 
 main {
