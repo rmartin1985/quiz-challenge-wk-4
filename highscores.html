@@ -12,12 +12,13 @@
 <body>
     <main>
         <div class="container">
-            <div id="timer"></div>
-            <div id="welcome">
-                <h1>High Scores</h1>
-                <ul id="high-score"></ul>
-                <button id="home">Home</button>
-                <button id="clear" value="reset">Clear High Scores</button>
+            <div id="scores">
+                <h1>Top 5 High Scores</h1>
+                <ol id="high-score"></ol>
+                <div id="buttons">
+                    <button id="home">Play Again</button>
+                    <button id="clear" value="reset">Clear High Scores</button>
+                </div>
             </div>
         </div>
     </main>
@@ -39,16 +40,17 @@
         var allScores = localStorage.getItem("allScores");
         allScores = JSON.parse(allScores);
 
-        allScores.length = (0, 5);
+        allScores.length = (0, 5)
 
         if (allScores !== null) {
             for (var i = 0; i < allScores.length; i++) {
                 var createLi = document.createElement("li");
+                createLi.setAttribute("id", "topfive");
                 createLi.textContent = allScores[i].initials + " " + allScores[i].score;
                 highScoreEl.appendChild(createLi);
             }
         };
-       
+
 
 
 

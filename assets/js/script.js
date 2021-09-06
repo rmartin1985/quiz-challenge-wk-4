@@ -1,8 +1,17 @@
 // Variables to select elements using the DOM
 var currentTimeEl = document.querySelector("#timer");
 var timerEl = document.querySelector("#start");
+var goToEl = document.querySelector("#go-to");
 var questionsEl = document.querySelector("#welcome");
 var containerEl = document.querySelector(".container");
+var enterEl = document.querySelector(".enter");
+var testEl = document.querySelector("#test");
+var newDiv = document.querySelector("#newDiv");
+var submitEl = document.querySelector("#btn-sub");
+
+goToEl.addEventListener("click", function () {
+    window.location.replace("highscores.html");
+}) 
 
 // variables will go here 
 var score = 0
@@ -11,29 +20,29 @@ var questionIndex = 0;
 // make an object to hold the questions, choices, and correct answers
 var questions = [
     {
-        question: "Sample question 1",
-        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
-        answer: "choice 1"
+        question: "Which of the following is NOT a JavaScript basic data type?",
+        choices: ["Number", "Character", "String", "Boolean"],
+        answer: "Character"
     },
     {
-        question: "Sample question 2",
-        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
-        answer: "choice 2"
+        question: "What symbol is used for comments in JavaScript?",
+        choices: ["//", "<!--", "**", "$"],
+        answer: "//"
     },
     {
-        question: "Sample question 3",
-        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
-        answer: "choice 3"
+        question: "What are the looping structures in JavaScript?",
+        choices: ["For, If, Else", "While, Meanwhile, Do-while", "For, While, Do-while", "Snap, Crackle, Pop"],
+        answer: "For, While, Do-while"
     },
     {
-        question: "Sample question 4",
-        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
-        answer: "choice 4"
+        question: "How can you convert the string of any base to an integer in JavaScript?",
+        choices: ["JSON", "parseInt", "innerHTML", "toString"],
+        answer: "parseInt"
     },
     {
-        question: "Sample question 5",
-        choices: ["choice 1", "choice 2", "choice 3", "choice 4"],
-        answer: "choice 1"
+        question: "What would be the result of 3+2+'7' in JavaScript?",
+        choices: ["12", "327", "NaN", "57"],
+        answer: "57"
     },
 
 ];
@@ -56,6 +65,9 @@ timerEl.addEventListener("click", function () {
                 clearInterval(initialTime);
                 endGame();
                 currentTimeEl.textContent = "You are out of time!";
+                newDiv.setAttribute("class", "hide");
+                
+
             }
         }, 1000);
     }
@@ -76,7 +88,9 @@ function load(questionIndex) {
 
     nextChoice.forEach(function (newChoice) {
         var option = document.createElement("li");
+        option.setAttribute("id", "choice");
         option.textContent = newChoice;
+        questionsEl.setAttribute("id", "q-p");
         questionsEl.appendChild(choice);
         choice.appendChild(option);
         option.addEventListener("click", (check));
@@ -87,26 +101,28 @@ function check(event) {
     var element = event.target;
 
     if (element.matches("li")) {
-        var newDiv = document.querySelector("#newDiv");
-        //newDiv.setAttribute("id", "newDiv");
+        newDiv.removeAttribute("class", "hide");
 
         if (element.textContent == questions[questionIndex].answer) {
             score++;
             newDiv.textContent = "Correct!"
+            newDiv.setAttribute("id", "correct");
         } else {
             timeLeft = timeLeft - penalty;
             newDiv.textContent = "Incorrect!"
+            newDiv.setAttribute("id", "incorrect");
         }
     }
     questionIndex++;
 
     if (questionIndex >= questions.length) {
+        newDiv.setAttribute("id", "result");
         endGame();
         newDiv.textContent = "Quiz Over! " + "You got " + score + "/" + questions.length + " correct.";
     } else {
         load(questionIndex);
     }
-    questionsEl.appendChild(newDiv);
+    enterEl.appendChild(newDiv);
 }
 
 // Function to end the quiz
@@ -140,7 +156,7 @@ function endGame() {
     label.setAttribute("id", "label");
     label.textContent = "Enter your initials: ";
 
-    questionsEl.appendChild(label);
+    testEl.appendChild(label);
 
     var input = document.createElement("input");
     input.setAttribute("type", "text");
@@ -148,14 +164,14 @@ function endGame() {
     input.setAttribute("maxlength", "2");
     input.textContent = "";
 
-    questionsEl.appendChild(input);
+    testEl.appendChild(input);
 
     var submit = document.createElement("button");
     submit.setAttribute("type", "submit");
     submit.setAttribute("id", "Submit");
     submit.textContent = "Submit";
 
-    questionsEl.appendChild(submit);
+    submitEl.appendChild(submit);
 
     submit.addEventListener("click", function () {
         var initials = input.value.toUpperCase();

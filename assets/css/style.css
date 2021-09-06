@@ -7,23 +7,50 @@ body {
 }
 
 .container {
-    width: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
-#start {
+#start, #go-to {
     background-color: blue;
-    margin-left: 33%;
+    margin: auto;
     padding: 15px 32px;
-    font-size: 20px;
+    font-size: 2vw;
     color: white;
+}
+
+#go-to {
+    background-color: green;
+}
+
+.btn-start {
+    display: flex;
+    justify-content: center;
 }
 
 #welcome {
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#scores {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+a {
+    font-size: 2vw;
+    color: black;
+    text-decoration: none;
 }
 
 #timer {
     float: right;
+    font-size: 2.5vw;
 }
 
 button {
@@ -32,6 +59,7 @@ button {
 
 h1 {
     text-align: center;
+    font-size: 4vw;
 }
 
 textarea {
@@ -40,8 +68,8 @@ textarea {
 }
 
 #Submit {
-    background-color: purple;
-    margin-left: 33%;
+    background-color: blue;
+    margin: auto;
     padding: 15px 32px;
     font-size: 20px;
     color: white;
@@ -49,50 +77,64 @@ textarea {
 
 label {
     margin-right: 10px;
+    padding-top: .5rem;
 }
 
 input {
     margin-bottom: 20px;
-    width: 50%;
-    border: 1px solid lightgray;
+    
 }
 
-li {
-    background-color: purple;
-    margin-top: 10px;
+#topfive {
+    margin: 10px 0px;
+    cursor: default;
+    font-size: 3vw;
+    text-align: center;
+}
+
+#choice {
+    background-color: blue;
+    margin: 10px 0px;
     padding: 5px 15px;
-    width: 80%;
-    font-size: 18px;
     color: white;
+    cursor: default;
+    text-align: center;
 }
 
 #newDiv {
-    margin-top: 20px;
-    border-top: 1px solid lightgray;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 3vw;
+}
+
+#result, #correct, #incorrect {
+    color: black;
+    font-size: 3vw;
+}
+
+#correct {
+    color: green;
+}
+
+#incorrect {
+    color: red;
 }
 
 #home {
-    background-color: purple;
-    position: relative;
+    background-color: green;
     padding: 10px;
     font-size: 20px;
     color: white;
-    top: 30%;
-    left: 55%;
-    width: auto;
-    text-align: center;
-    text-decoration: none;
+    width: 45%;
 }
 
 #clear {
-    background-color: purple;
-    position: relative;
+    background-color: red;
     padding: 10px;
     font-size: 20px;
     color: white;
-    top: 30%;
-    right: 5%;
-    text-align: center;
+    width: 45%;
 }
 
 main {
@@ -103,5 +145,57 @@ main {
     height: 75vh;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
+#buttons {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#high-score {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 5vw;
+}
+
+#instructions {
+    text-align: center;
+    font-size: 2vw;
+}
+
+ul {
+    padding: 0;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.enter {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+#newP {
+    text-align: center;
+    font-size: 3vw;
+}
+
+#test {
+    display: flex;
+}
+
+#btn-sub {
+    display: flex;
+    width: 25%;
+}
+
+#q-p {
+    font-size: 2vw;
+}
